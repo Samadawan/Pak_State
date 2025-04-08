@@ -9,8 +9,8 @@ turtle.shape(image)
 data = pandas.read_csv("5_states.csv")
 all_states = data.state.to_list()
 Gussed_state =[]
-while len(Gussed_state) < 5:
-    answer_state = screen.textinput(title="Gusse the state", prompt="Which one is next state")
+while len(Gussed_state) < len(all_states):
+    answer_state = screen.textinput(title=f"{len(Gussed_state)}/{len(all_states)} States Correct", prompt="Which one is next state").title()
     if answer_state in all_states:
         Gussed_state.append(answer_state)
         t = turtle.Turtle()
@@ -19,7 +19,7 @@ while len(Gussed_state) < 5:
         state_data = data[data.state == answer_state]
         t.goto(state_data.x.item(), state_data.y.item())
         t.write(answer_state)
-#my new project
+
 
 
 screen.exitonclick()
